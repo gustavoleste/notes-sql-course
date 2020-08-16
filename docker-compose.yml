@@ -10,9 +10,11 @@ services:
         environment: 
             POSTGRES_PASSWORD: socratica
     pgadmin-socratica:
-        image: dpage/pgadmin4
+        image: thajeztah/pgadmin4
+        volumes:
+            - ./data:/pgadmin/storage/
         ports: 
-            - 5000:80
+            - 5050:5050
         depends_on: 
             - postgres-socratica
         environment:
