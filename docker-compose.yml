@@ -1,0 +1,22 @@
+version: "3.7"
+
+services:
+    postgres-socratica:
+        image: postgres
+        ports: 
+            - 5432:5432
+        volumes: 
+            - sql-course-socratica:/var/lib/postgresql/data
+        environment: 
+            POSTGRES_PASSWORD: socratica
+    pgadmin-socratica:
+        image: dpage/pgadmin4
+        ports: 
+            - 5000:80
+        depends_on: 
+            - postgres-socratica
+        environment:
+            PGADMIN_DEFAULT_EMAIL: root@email.com
+            PGADMIN_DEFAULT_PASSWORD: socratica
+volumes: 
+    sql-course-socratica:
